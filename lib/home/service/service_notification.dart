@@ -40,7 +40,7 @@ _onMessage() {
   });
 }
 
-//Método para para redirecionar para uma página específica depois de receber a mensagem
+//*Método para para redirecionar para uma página específica depois de receber a mensagem
 
 //   _goToPageAfterMessage(message) {
 //     final String route = message.data['route'] ?? '';
