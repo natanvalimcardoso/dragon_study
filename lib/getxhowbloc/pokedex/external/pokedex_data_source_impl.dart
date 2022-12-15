@@ -5,10 +5,10 @@ import 'package:push_notification_firebase/getxhowbloc/pokedex/domain/model/poke
 
 import '../infra/datasource/i_pokedex_datasource.dart';
 
-class PokedexApi implements IPokedexDatasource {
+class PokedexDataSourceImpl implements IPokedexDatasource {
   final Dio _dio;
 
-  PokedexApi(this._dio);
+  PokedexDataSourceImpl(this._dio);
 
   @override
   Future<List<PokemonModel>> getPokemon() async {
@@ -30,3 +30,4 @@ class PokedexApi implements IPokedexDatasource {
     }
   }
 }
+

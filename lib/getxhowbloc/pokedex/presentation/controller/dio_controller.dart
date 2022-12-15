@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import 'package:push_notification_firebase/getxhowbloc/pokedex/external/pokedex_api.dart';
 
-import '../../domain/repositories/i_pokedex_repository.dart';
+import '../../external/pokedex_data_source_impl.dart';
 
 class DioController extends GetxController with StateMixin {
-  final PokedexApi pokedexApi;
+  final PokedexDataSourceImpl dataSource;
 
-  DioController(this.pokedexApi);
+  DioController(this.dataSource);
 
   @override
   void onInit() {
@@ -17,7 +16,7 @@ class DioController extends GetxController with StateMixin {
   getPokemon() async {
     change([], status: RxStatus.loading());
     try {
-      final dados = await pokedexApi.getPokemon();
+      final dados = await dataSource.getPokemon();
       change(dados, status: RxStatus.success());
     } catch (e) {
       print(e);
@@ -33,9 +32,8 @@ class DioController extends GetxController with StateMixin {
 //   print(result[13].name);
 // }
 
-// void main() {
-//   DioController controller = DioController(PokedexRepositoryImp(PokedexApi(Dio())));
-//   final result = controller.getPokemon();
+// Future<void> main() async {
+//   final controller = DioController(PokedexDataSourceImpl(Dio()));
+//   final result = await controller.getPokemon();
 //   print(result[13].img);
-//   print(result[13].name);
 // }
