@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class PokemonModel {
@@ -26,4 +27,7 @@ class PokemonModel {
   String toJson() => json.encode(toMap());
 
   factory PokemonModel.fromJson(String source) => PokemonModel.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'PokemonModel(name: $name, img: $img)';
 }
