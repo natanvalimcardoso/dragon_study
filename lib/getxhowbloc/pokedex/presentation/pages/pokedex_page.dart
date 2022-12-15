@@ -6,7 +6,7 @@ import '../../domain/model/pokemon_model.dart';
 
 class PokedexPage extends GetView<DioController> {
   const PokedexPage({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class PokedexPage extends GetView<DioController> {
         title: Text('Dio Page'),
       ),
       body: controller.obx((state) {
-        final List<PokemonModel> pokemons = state as List<PokemonModel>;
+        final List<PokemonModel> pokemons = state;
         return ListView.builder(
           itemCount: pokemons.length,
           itemBuilder: (context, index) {
