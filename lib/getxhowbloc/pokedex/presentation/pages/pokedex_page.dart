@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:push_notification_firebase/getxhowbloc/pokedex/presentation/controller/dio_controller.dart';
+import '../controller/dio_controller.dart';
 
 import '../../domain/model/pokemon_model.dart';
 

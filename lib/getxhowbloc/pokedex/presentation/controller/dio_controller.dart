@@ -8,6 +8,7 @@ class DioController extends GetxController with StateMixin {
   DioController(this.dataSource);
 
   @override
+  
   void onInit() {
     super.onInit();
     getPokemon();
@@ -26,7 +27,7 @@ class DioController extends GetxController with StateMixin {
 }
 
 // Future<void> main(List<String> args) async {
-//   final usecase = GetAllPokemonUsecaseImp(PokedexRepositoryImp(PokedexApi(Dio())));
+//   final usecase = GetAllPokemonUsecaseImp(PokedexRepositoryImp(PokedexDataSourceImpl(Dio())));
 //   final result = await usecase.repository.getPokemons();
 //   print(result[13].img);
 //   print(result[13].name);

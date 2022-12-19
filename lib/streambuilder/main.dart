@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'pokedex/presentation/controller/dio_bindings.dart';
 import 'pokedex/presentation/pages/pokedex_page.dart';
 
 void main() {
@@ -16,14 +15,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red ,
       ),
       initialRoute: '/',
       getPages: [
         GetPage(
           name: '/',
-          page: () => const PokedexPage(),
-          binding: DioBindings()
+          page: () =>  PokedexPage(),
         ),
       ],
     );
