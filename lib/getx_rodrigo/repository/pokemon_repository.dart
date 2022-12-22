@@ -5,10 +5,10 @@ import 'package:dio/dio.dart';
 import '../../shared/models/pokemon_model.dart';
 import '../../shared/repositories/i_pokedex_repository.dart';
 
-class PokemonRepository implements IPokedexRepositoryRodrigo {
+class PokemonRepositoryRodrigo implements IPokedexRepositoryRodrigo {
   final Dio _dio;
 
-  PokemonRepository(this._dio);
+  PokemonRepositoryRodrigo(this._dio);
 
   @override
   Future<List<Pokemon>> getPokemonsRodrigo() async {
