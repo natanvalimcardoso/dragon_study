@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/',
-          page: () => const PokemonsPage(),
+          page: () =>  PokemonsPage(),
           binding: PokemonBindings(),
         ),
       ],
