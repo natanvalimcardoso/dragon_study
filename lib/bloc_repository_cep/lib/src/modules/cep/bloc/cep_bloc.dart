@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_getx/src/modules/cep/bloc/cep_event.dart';
-import 'package:flutter_getx/src/modules/cep/bloc/cep_state.dart';
 
 import '../repositories/cep_repository.dart';
+import 'cep_event.dart';
+import 'cep_state.dart';
 
 class CepBloc extends Bloc<CepEvent, CepState> {
   CepBloc() :super(const CepInitialState()){

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_getx/src/shared/model/cep_model.dart';
 import 'package:http/http.dart' as https;
+
+import '../../../shared/model/cep_model.dart';
 import '../../../shared/repositories/i_cep_repository.dart';
 
 class CepRepository implements ICepRepository {
