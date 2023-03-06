@@ -20,9 +20,20 @@ class CepController extends GetxController with StateMixin {
   CepController({
     required this.repository,
   });
-  
+
+  @override
+  void onInit() {
+    getCep('');
+    super.onInit();
+  }
+
   void getCep(String cep) async {
-    change(null, status: RxStatus.loading());
+    if (cep.isEmpty) {
+      change(null, status: RxStatus.empty());
+      return;
+    } else {
+      change(null, status: RxStatus.loading());
+    }
     try {
       final response = await repository.receberCep(cep);
       change(response, status: RxStatus.success());

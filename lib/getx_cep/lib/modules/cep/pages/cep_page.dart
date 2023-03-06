@@ -20,6 +20,7 @@ class _CepPageGetxState extends State<CepPageGetx> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Cep'),
       ),
       body: Padding(
@@ -68,6 +69,9 @@ class _CepPageGetxState extends State<CepPageGetx> {
                         child: CircularProgressIndicator(),
                       ),
                       onError: (error) => Text(error.toString()),
+                      onEmpty: const Center(
+                        child: Text('Pesquise um Cep'),
+                      ),
                     ),
                   ],
                 ),
