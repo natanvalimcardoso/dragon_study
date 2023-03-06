@@ -1,20 +1,26 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:push_notification_firebase/bloc_cep/lib/src/modules/cep/repositories/cep_repository.dart';
-import 'package:push_notification_firebase/bloc_cep/lib/src/shared/repositories/i_cep_repository.dart';
+
+import '../../../shared/repositories/i_cep_repository.dart';
+import '../repositories/cep_repository.dart';
 
 class CepBindings implements Bindings {
   @override
   void dependencies() {
     Get.put(Dio());
     Get.put<ICepRepository>(CepRepository());
-    Get.put(CepController());
+    Get.put(CepController(repository: Get.find()));
   }
 }
 
 class CepController extends GetxController with StateMixin {
-  final CepRepository repository = CepRepository();
+  final ICepRepository repository;
 
+  CepController({
+    required this.repository,
+  });
+  
   void getCep(String cep) async {
     change(null, status: RxStatus.loading());
     try {
