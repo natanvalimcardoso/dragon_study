@@ -14,8 +14,8 @@ class CepRepository implements ICepRepository {
       final json = response.data;
       final cepModel = CepModel.fromMap(json);
       return cepModel;
-    } catch (e) {
-      throw(e.toString());
+    } on DioError catch (e) {
+      throw Exception(e.message);
     }
   }
 }
