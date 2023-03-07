@@ -1,25 +1,21 @@
-import 'dart:convert';
 
-import 'package:http/http.dart' as https;
+import 'package:dio/dio.dart';
 
 import '../../../shared/model/cep_model.dart';
 import '../../../shared/repositories/i_cep_repository.dart';
 
 class CepRepository implements ICepRepository {
+  final Dio dio = Dio();
+
   @override
   Future<CepModel> receberCep(String cep) async {
-    final response = await https.get(
-      Uri.parse(
-        'https://viacep.com.br/ws/$cep/json/',
-      ),
-    );
-
     try {
-      final json = jsonDecode(response.body);
+      final response = await dio.get('https://viacep.com.br/ws/$cep/json/');
+      final json = response.data;
       final cepModel = CepModel.fromMap(json);
       return cepModel;
     } catch (e) {
-      return throw (e.toString());
+      throw(e.toString());
     }
   }
 }
