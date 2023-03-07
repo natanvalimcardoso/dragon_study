@@ -21,6 +21,7 @@ class _CepPageGetxState extends State<CepPageGetx> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        shadowColor:  Colors.yellow,
         title: const Text('Cep Getx'),
       ),
       body: Padding(

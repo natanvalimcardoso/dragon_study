@@ -9,7 +9,7 @@ class CepBindings implements Bindings {
   @override
   void dependencies() {
     Get.put(Dio());
-    Get.put<ICepRepository>(CepRepository());
+    Get.put<ICepRepository>(CepRepository(dio: Get.find()));
     Get.put(CepController(repository: Get.find()));
   }
 }

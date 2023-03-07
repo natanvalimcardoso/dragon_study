@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:dio/dio.dart';
 
@@ -5,7 +6,11 @@ import '../../../shared/model/cep_model.dart';
 import '../../../shared/repositories/i_cep_repository.dart';
 
 class CepRepository implements ICepRepository {
-  final Dio dio = Dio();
+  final Dio dio;
+  
+  CepRepository({
+    required this.dio,
+  });
 
   @override
   Future<CepModel> receberCep(String cep) async {
