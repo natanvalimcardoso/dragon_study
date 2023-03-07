@@ -36,6 +36,9 @@ class _CepPageGetxState extends State<CepPageGetx> {
                 height: 15,
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
                 onPressed: () {
                   controllerCep.getCep(cepEC.text);
                 },
