@@ -1,60 +1,39 @@
 import 'package:flutter/material.dart';
 
-class EmailFormField extends StatefulWidget {
+class TextFormInput extends StatefulWidget {
+  final String? Function(String?)? validator;
   final String labelText;
+  final TextEditingController controller;
 
-  EmailFormField({required this.labelText});
+  TextFormInput({super.key, required this.labelText, this.validator, required this.controller});
 
   @override
-  _EmailFormFieldState createState() => _EmailFormFieldState();
+  // ignore: library_private_types_in_public_api
+  _TextFormInputState createState() => _TextFormInputState();
 }
 
-class _EmailFormFieldState extends State<EmailFormField> {
-  final TextEditingController _emailController = TextEditingController();
-  bool _isValid = true;
-  String _errorMessage = '';
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    super.dispose();
-  }
-
-  bool _validateEmail(String email) {
-    final emailRegex = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-    return emailRegex.hasMatch(email);
-  }
-
-  void _onEmailChanged(String value) {
-    setState(() {
-      if (value.isEmpty) {
-        _isValid = false;
-        _errorMessage = 'Campo obrigatório';
-      } else if (!_validateEmail(value)) {
-        _isValid = false;
-        _errorMessage = 'E-mail inválido';
-      } else {
-        _isValid = true;
-        _errorMessage = '';
-      }
-    });
-  }
-
+class _TextFormInputState extends State<TextFormInput> {
+bool _showError = false;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: _emailController,
+      controller: widget.controller,
+      
       decoration: InputDecoration(
         labelText: widget.labelText,
-        border: OutlineInputBorder(),
+         labelStyle: TextStyle(color: _showError ? Colors.red : Colors.black),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black),
+        ),
+        border: const OutlineInputBorder(),
       ),
-      onChanged: _onEmailChanged,
       validator: (value) {
-        if (!_isValid) {
-          return _errorMessage;
-        }
-        return null;
+        setState(() {
+          _showError = widget.validator?.call(value) != null;
+        });
+        return widget.validator?.call(value);
       },
+          
     );
   }
 }
