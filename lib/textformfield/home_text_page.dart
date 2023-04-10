@@ -14,6 +14,7 @@ class _HomeTextPageState extends State<HomeTextPage> {
   final _formKey = GlobalKey<FormState>();
   final _controllerEmail = TextEditingController();
   final _controllerSenha = TextEditingController();
+  final _controllerSenhaFake = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +44,15 @@ class _HomeTextPageState extends State<HomeTextPage> {
                   ]),
                   labelText: 'Senha',
                   controller: _controllerSenha,
+                ),
+                TextFormInput(
+                  validator: Validatorless.multiple([
+                    Validatorless.required('Senha obrigatória'),
+                    Validatorless.min(6, 'Senha deve ter no mínimo 6 caracteres'),
+                    Validatorless.compare(_controllerSenha, 'As senhas não são iguais')
+                  ]),
+                  labelText: 'Repetir senha',
+                  controller: _controllerSenhaFake,
                 ),
                 ElevatedButton(
                   onPressed: () {
